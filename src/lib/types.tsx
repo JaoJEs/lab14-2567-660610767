@@ -3,8 +3,15 @@ export interface TermsAndConditionsProps {
   close: () => void;
 }
 
-export interface footerprops {
+export interface ReviewProps {
+  id: number;
+  name: string;
+  rating: number;
+  comment: string;
+}
+
+export interface FooterProps {
   year: string;
   name: string;
-  id: string;
+  studentId: string;
 }

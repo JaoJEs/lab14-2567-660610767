@@ -1,44 +1,31 @@
 "use client";
-import { Container, Text, Title, Pagination, Space, Rating, Textarea, Button, Group, Divider } from "@mantine/core";
+import { Container, Title } from "@mantine/core";
+
+import AddReview from "@components/AddReview"
+import Review from "@components/Review"
+import Pagnigation from '@components/Pagination'
 import Footer from "@components/Footer";
+
+import { Reviews } from "@lib/reviews";
 
 export default function Home() {
   return (
     <Container size="600px">
+      
       <Title order={2}>Food Review 🍕</Title>
 
-      <Title order={4} mt="sm">Your rating</Title>
+      <AddReview/>
 
-      <Rating defaultValue={0} size="lg" />
+      {Reviews.map((review) => (
+        <Review 
+          key = {review.id}
+          {...review}
+        />
+      ))}
 
-      <Textarea
-            label="Your review"
-            placeholder="Do you enjoy eating?"
-            mt="xs"
-            rows={3}
-      />
+      <Pagnigation/>
 
-      <Button variant="filled" color="orange" mt="xs" size="sm" fz={13}>Submit Review</Button>
-
-      <Divider my="sm" />
-      <Group justify="center" ta="center">
-        <Title order={4}>Elon Musk</Title>
-        <Rating defaultValue={5} readOnly />
-      </Group>
-      <Text c="dimmed" ta="center" fz={15}>Best pizza in this world. I give you X score.</Text>
-
-      <Divider my="sm" />
-      <Group justify="center" ta="center">
-        <Title order={4}>Mark Zuck</Title>
-        <Rating defaultValue={4} readOnly />
-      </Group>
-      <Text c="dimmed" ta="center" fz={15}>My favourite part is pepperoni</Text>
-      
-      <Group justify="center" mt="md" >
-        <Pagination total={20} color="orange" />
-      </Group>
-
-      <Footer year="2024" name="Noprada Kritwattananont" id="660610766"/>
+      <Footer year="2024" name="Niphitpon Thosap" studentId="660610767"/>
 
     </Container>
   );
